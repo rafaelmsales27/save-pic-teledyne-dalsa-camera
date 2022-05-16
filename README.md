@@ -12,3 +12,4 @@ My needs were:
 - Save the image in a folder
 
 I am just starting with C# and conding in general so the code is not optmized neither clean by any means. Feel free to use it as you like and if I can help in anyway feel free to contact me via email (rafaelmsales27@gmail.com)
+Don't forget taht most of the code is provided by Teledyne DALSA.
