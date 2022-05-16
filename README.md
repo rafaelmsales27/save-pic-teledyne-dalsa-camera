@@ -2,7 +2,7 @@
 
 In a few words: Connects to Teledyne DALSA Camera and saves picture to computer directory
 
-The project start with the need to trigger Teledyne Dalsa Genie Nano C1950IF camera and save the image on a given folder on the computer for further image procesing.
+The project started with the need to trigger Teledyne Dalsa Genie Nano C1950IF camera and save the image on a given folder on the computer for further image procesing.
 
 The idea was to use the example codes provided by Teledyne DALSA with the use of the Sapera LT framework.
 The example GrabConsole from teledyne DALSA was modified to my needs.
