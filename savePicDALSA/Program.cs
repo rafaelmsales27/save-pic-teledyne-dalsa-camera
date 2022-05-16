@@ -7,7 +7,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
 {
     class GrabConsole
     {
-        static float lastFrameRate = 0.0f;
+        //static float lastFrameRate = 0.0f;
 
         static void xfer_XferNotify(object sender, SapXferNotifyEventArgs args)
         {
