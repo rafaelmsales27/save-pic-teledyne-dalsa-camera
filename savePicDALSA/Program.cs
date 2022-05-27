@@ -131,6 +131,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
             //Console.WriteLine("\nPress any key to terminate\n");
             //Console.ReadKey(true);
 
+
             DestroysObjects(Acq, AcqDevice, Buffers, Xfer, View);
             loc.Dispose();
         }
