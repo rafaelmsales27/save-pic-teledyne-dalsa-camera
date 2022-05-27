@@ -8,7 +8,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
     class GrabConsole
     {
 
-        static float lastFrameRate = 0.0f;
+        //static float lastFrameRate = 0.0f;
 
         static void xfer_XferNotify(object sender, SapXferNotifyEventArgs args)
         {
@@ -126,7 +126,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
             
 
             Xfer.Snap();
-            //Xfer.Wait(1000);
+            Xfer.Wait(2000);
             Console.WriteLine("Snapped");
             //Console.WriteLine("\nPress any key to terminate\n");
             //Console.ReadKey(true);
