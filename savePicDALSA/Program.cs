@@ -7,42 +7,33 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
 {
     class GrabConsole
     {
-        //static float lastFrameRate = 0.0f;
+
+        static float lastFrameRate = 0.0f;
 
         static void xfer_XferNotify(object sender, SapXferNotifyEventArgs args)
         {
-            //// Save Image
-            //SapBufferWithTrash Buffers = args.Context as SapBufferWithTrash;
-            //Buffers.Save("Pier.bmp", "-Format bmp");
-
-            //// refresh view
-            //SapView View = args.Context as SapView;
-            //View.Show();
-
-            //// refresh frame rate
-            //SapTransfer transfer = sender as SapTransfer;
-            //if (transfer.UpdateFrameRateStatistics())
-            //{
-            //    SapXferFrameRateInfo stats = transfer.FrameRateStatistics;
-            //    float framerate = 0.0f;
-
-            //    if (stats.IsLiveFrameRateAvailable)
-            //        framerate = stats.LiveFrameRate;
-
-            //    // check if frame rate is stalled
-            //    if (stats.IsLiveFrameRateStalled)
-            //    {
-            //        Console.WriteLine("Live Frame rate is stalled.");
-            //    }
-
-            //    // update FPS only if the value changed by +/- 0.1
-            //    else if ((framerate > 0.0f) && (Math.Abs(lastFrameRate - framerate) > 0.1f))
-            //    {
-            //        Console.WriteLine("Grabbing at {0} frames/sec", framerate);
-            //        lastFrameRate = framerate;
-            //    }
-            //}
+            SapBufferWithTrash Buffers = args.Context as SapBufferWithTrash;
+            //If file already exists create new file name.
+            string FileName = "im0"; // This var will be edited to FileName1, FileName2 and so on...
+            string BaseFileName = "im"; // To prevent cases like "FileName12345", we 'reset' it by having a "base name". 
+            int i = 0;
+            while (File.Exists($"{"C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\"}/{FileName}.bmp"))
+            {
+                i = i + 1;
+                FileName = $"{BaseFileName}{i}";
+            }
+            // save the File
+            bool picSaved = Buffers.Save("C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\" + FileName + ".bmp", "-format bmp");
+            if (picSaved)
+            {
+                Console.WriteLine("Picture saved.");
+            }
+            else
+            {
+                Console.WriteLine("Picture NOT saved.");
+            }
         }
+
 
         static void Main(string[] args)
         {
@@ -100,7 +91,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
                 }
             }
 
-            View = new SapView(Buffers);
+            //View = new SapView(Buffers);
 
             // End of frame event
             Xfer.Pairs[0].EventType = SapXferPair.XferEventType.EndOfFrame;
@@ -125,35 +116,17 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
             }
 
             // Create buffer object
-            /*
-            if (!View.Create())
-            {
-               Console.WriteLine("Error during SapView creation!\n");
-               DestroysObjects(Acq, AcqDevice, Buffers, Xfer, View);
-               return;
-            }*/
+            //if (!View.Create())
+            //{
+            //   Console.WriteLine("Error during SapView creation!\n");
+            //   DestroysObjects(Acq, AcqDevice, Buffers, Xfer, View);
+            //   return;
+            //}
 
-            //If file already exists create new file name.
-            string FileName = "im0"; // This var will be edited to FileName1, FileName2 and so on...
-            string BaseFileName = "im"; // To prevent cases like "FileName12345", we 'reset' it by having a "base name". 
-            int i = 0;
-            while (File.Exists($"{"C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\"}/{FileName}.bmp"))
-            {
-                i = i + 1;
-                FileName = $"{BaseFileName}{i}";
-            }
-            // save the File
-            bool picSaved = Buffers.Save("C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\" + FileName + ".bmp", "-format bmp");
-            if (picSaved)
-            {
-                Console.WriteLine("Picture saved.");
-            }
-            else
-            {
-                Console.WriteLine("Picture NOT saved.");
-            }
+            
 
             Xfer.Snap();
+            //Xfer.Wait(1000);
             Console.WriteLine("Snapped");
             //Console.WriteLine("\nPress any key to terminate\n");
             //Console.ReadKey(true);
