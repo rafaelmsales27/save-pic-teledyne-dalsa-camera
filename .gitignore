@@ -350,4 +350,7 @@ MigrationBackup/
 .ionide/
 
 # Ignore the folder that images are saved
-savedPics/
+.savedPics/
+
+#Ignore all .bmp files
+*.bmp
