@@ -82,6 +82,7 @@ namespace DALSA.SaperaLT.Examples.NET.Utils
             if (serverCount == 0)
             {
                 Console.WriteLine("No device found!\n");
+                //Console.ReadKey();
                 return false;
             }
 
@@ -112,6 +113,7 @@ namespace DALSA.SaperaLT.Examples.NET.Utils
             if (!serverFound && !cameraFound)
             {
                 Console.WriteLine("No acquisition server found!\n");
+                //Console.ReadKey();
                 return false;
             }
 

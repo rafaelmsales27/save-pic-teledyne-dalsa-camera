@@ -126,7 +126,7 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
             
 
             Xfer.Snap();
-            Xfer.Wait(2000);
+            Xfer.Wait(5000);
             Console.WriteLine("Snapped");
             //Console.WriteLine("\nPress any key to terminate\n");
             //Console.ReadKey(true);

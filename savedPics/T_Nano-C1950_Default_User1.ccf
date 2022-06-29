@@ -6,7 +6,7 @@ Device Index=0
 Company Name=Teledyne DALSA
 Camera Name=Default
 Model Name=Nano-C1950
-Vic Name=Default
+Vic Name=User1
 [Acquisition Device Features]
 # {05D8C294-F295-4dfb-9D01-096BD04049F4}
 # GenApi persistence file (version 2.4.0)
@@ -83,17 +83,18 @@ timerSelector	Timer1
 timerSelector	Timer1
 timerDuration	1
 timerSelector	Timer1
-BalanceWhiteAuto	Off
+BalanceWhiteAuto	OnDemand
+balanceRatioReference	Auto
 lutMode	Off
 lutType	UserDefined
 gammaCorrection	0.7
 BalanceRatioSelector	Red
 BalanceRatioSelector	Red
-BalanceRatio	1.29688
+BalanceRatio	1.61719
 BalanceRatioSelector	Green
 BalanceRatio	1
 BalanceRatioSelector	Blue
-BalanceRatio	1.89844
+BalanceRatio	2.02344
 BalanceRatioSelector	Red
 cyclingPresetMode	Off
 cyclingPresetCount	2
@@ -132,7 +133,7 @@ Width	1936
 OffsetX	0
 Height	1216
 OffsetY	0
-PixelFormat	BayerRG8
+PixelFormat	BayerRG12
 multipleROIMode	Off
 ChunkModeActive	0
 chunkCompatibilityMode	GenAPI
