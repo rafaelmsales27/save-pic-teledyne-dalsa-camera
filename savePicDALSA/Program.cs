@@ -2,6 +2,8 @@
 using System.IO;
 using DALSA.SaperaLT.SapClassBasic;
 using DALSA.SaperaLT.Examples.NET.Utils;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
 {
@@ -10,30 +12,13 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
 
         //static float lastFrameRate = 0.0f;
 
-        static void xfer_XferNotify(object sender, SapXferNotifyEventArgs args)
-        {
-            SapBufferWithTrash Buffers = args.Context as SapBufferWithTrash;
-            //If file already exists create new file name.
-            string FileName = "im0"; // This var will be edited to FileName1, FileName2 and so on...
-            string BaseFileName = "im"; // To prevent cases like "FileName12345", we 'reset' it by having a "base name". 
-            int i = 0;
-            while (File.Exists($"{"C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\"}/{FileName}.bmp"))
-            {
-                i = i + 1;
-                FileName = $"{BaseFileName}{i}";
-            }
-            // save the File
-            bool picSaved = Buffers.Save("C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\" + FileName + ".bmp", "-format bmp");
-            if (picSaved)
-            {
-                Console.WriteLine("Picture saved.");
-            }
-            else
-            {
-                Console.WriteLine("Picture NOT saved.");
-            }
-        }
+        static class Globals
 
+        {
+
+            public static object sync_object = new object();
+
+        }
 
         static void Main(string[] args)
         {
@@ -127,15 +112,43 @@ namespace DALSA.SaperaLT.Examples.NET.CSharp.GrabConsole
 
             Xfer.Snap();
             Xfer.Wait(5000);
-            Console.WriteLine("Snapped");
+            Thread.Sleep(100);
+            //Console.WriteLine("Snapped");
             //Console.WriteLine("\nPress any key to terminate\n");
             //Console.ReadKey(true);
-
-
-            DestroysObjects(Acq, AcqDevice, Buffers, Xfer, View);
-            loc.Dispose();
+            lock (Globals.sync_object)
+            {
+                DestroysObjects(Acq, AcqDevice, Buffers, Xfer, View);
+                loc.Dispose();
+            }
         }
 
+        static void xfer_XferNotify(object sender, SapXferNotifyEventArgs args)
+        {
+            lock (Globals.sync_object)
+            {
+                SapBufferWithTrash Buffers = args.Context as SapBufferWithTrash;
+                //If file already exists create new file name.
+                string FileName = "im0"; // This var will be edited to FileName1, FileName2 and so on...
+                string BaseFileName = "im"; // To prevent cases like "FileName12345", we 'reset' it by having a "base name". 
+                int i = 0;
+                while (File.Exists($"{"C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\"}/{FileName}.bmp"))
+                {
+                    i = i + 1;
+                    FileName = $"{BaseFileName}{i}";
+                }
+                // save the File
+                bool picSaved = Buffers.Save("C:\\Users\\rafae\\Documents\\NET\\savePicDALSA\\savedPics\\" + FileName + ".bmp", "-format bmp");
+                if (picSaved)
+                {
+                    Console.WriteLine("Picture saved.");
+                }
+                else
+                {
+                    Console.WriteLine("Picture NOT saved.");
+                }
+            }
+        }
 
         static bool GetOptions(string[] args, MyAcquisitionParams acqParams)
         {
