@@ -354,3 +354,4 @@ MigrationBackup/
 
 #Ignore all .bmp files
 *.bmp
+/savedPics/joinedImgs/log.csv
