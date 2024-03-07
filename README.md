@@ -1,4 +1,4 @@
-# save-pic-teledyne-dalsa-camera
+# Save Picture Teledyne Dalsa Camera
 
 In a few words: Connects to Teledyne DALSA Camera and saves picture to computer directory
 
