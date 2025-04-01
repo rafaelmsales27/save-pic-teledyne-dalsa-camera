@@ -13,6 +13,8 @@ The main parts are:
 
 I am just starting with C# and coding in general so the code is not optmized neither clean by any means. Suggestions, improvements and criticisms are welcome.
 
-Feel free to use it as you like and if I can help in anyway feel free to contact me via email (rafaelmsales27@gmail.com)
+Feel free to contact me via [email](rafaelmsales27@gmail.com)
 
-Don't forget that most of the code is provided by Teledyne DALSA.
+## Disclaimer
+
+This project incorporates example code from Teledyne DALSA's [Sapera LT SDK](https://www.teledynevisionsolutions.com/products/sapera-lt-sdk). Users should refer to Teledyne DALSA's licensing terms before using or distributing this code.
