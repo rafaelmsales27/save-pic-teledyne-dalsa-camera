@@ -11,9 +11,9 @@ The main parts are:
 - Triggering the camera
 - Saving the image in a folder
 
-I am just starting with C# and coding in general so the code is not optmized neither clean by any means. Suggestions, improvements and criticisms are welcome.
+The code is not optmized neither clean by any means. Suggestions, improvements and criticisms are welcome.
 
-Feel free to contact me via [email](rafaelmsales27@gmail.com)
+Feel free to contact me via email at rafaelmsales27@gmail.com
 
 ## Disclaimer
 
